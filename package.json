@@ -1,0 +1,18 @@
+{
+  "name": "gramene-dbxrefs",
+  "version": "1.0.0",
+  "description": "Provide API for dbxrefs",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:warelab/gramene-dbxrefs.git"
+  },
+  "author": "ajo2995",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/warelab/gramene-dbxrefs/issues"
+  },
+  "homepage": "https://github.com/warelab/gramene-dbxrefs",
+  "dependencies": {
+  }
+}
