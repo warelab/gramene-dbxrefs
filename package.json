@@ -1,6 +1,6 @@
 {
   "name": "gramene-dbxrefs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Provide API for dbxrefs",
   "main": "index.js",
   "repository": {
@@ -13,6 +13,5 @@
     "url": "https://github.com/warelab/gramene-dbxrefs/issues"
   },
   "homepage": "https://github.com/warelab/gramene-dbxrefs",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
