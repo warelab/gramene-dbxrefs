@@ -11,65 +11,65 @@ var TAIR = {
   }
 }
 module.exports = {
-  TAIR_LOCUS_xrefs: TAIR,
-  ARAPORT_GENE_xrefs: TAIR,
-  UniGene_xrefs: {
+  TAIR_LOCUS__xrefs: TAIR,
+  ARAPORT_GENE__xrefs: TAIR,
+  UniGene__xrefs: {
     label: 'UniGene',
     url: function(id) {
       return 'http://www.ncbi.nlm.nih.gov/unigene/?term='+id;
     }
   },
-  UniParc_xrefs: {
+  UniParc__xrefs: {
     label: 'UniParc',
     url: function(id) {
       return 'http://www.uniprot.org/uniparc/'+id;
     }
   },
-  'Uniprot/SPTREMBL_xrefs': {
+  'Uniprot/SPTREMBL__xrefs': {
     label: 'UniProt',
     url: function(id) {
       return 'http://www.uniprot.org/uniprot/'+id;
     }
   },
-  protein_id_xrefs: ENA,
-  EMBL_xrefs: ENA,
-  KEGG_Enzyme_xrefs: {
+  protein_id__xrefs: ENA,
+  EMBL__xrefs: ENA,
+  KEGG_Enzyme__xrefs: {
     label: 'KEGG Enzyme',
     url: function(id) {
       return 'http://www.genome.jp/dbget-bin/www_bget?'+id;
     }
   },
-  UniPathway_xrefs: {
+  UniPathway__xrefs: {
     label: 'UniPathway',
     url: function(id) {
       return 'http://www.grenoble.prabi.fr/obiwarehouse/unipathway/upa?upid='+id;
     }
   },
-  MetaCyc_xrefs: {
+  MetaCyc__xrefs: {
     label: 'MetaCyc',
     url: function(id) {
       return 'http://metacyc.org/META/NEW-IMAGE?type=NIL&object='+id;
     }
   },
-  MEROPS_xrefs: {
+  MEROPS__xrefs: {
     label: 'MEROPS',
     url: function(id) {
       return 'http://merops.sanger.ac.uk/cgi-bin/pepsum?id='+id;
     }
   },
-  PDB_xrefs: {
+  PDB__xrefs: {
     label: 'PDB',
     url: function(id) {
       return 'http://www.rcsb.org/pdb/explore.do?structureId='+id;
     }
   },
-  GOA_xrefs: {
+  GOA__xrefs: {
     label: 'QuickGO',
     url: function(id) {
       return 'http://www.ebi.ac.uk/QuickGO/GProtein?ac='+id;
     }
   },
-  IntEnz_xrefs: {
+  IntEnz__xrefs: {
     label: 'IntEnz',
     url: function(id) {
       return 'http://www.ebi.ac.uk/intenz/query?cmd=SearchEC&ec='+id;
