@@ -31,6 +31,12 @@ module.exports = {
       return 'http://www.uniprot.org/uniprot/'+id;
     }
   },
+  'Uniprot/SWISSPROT': {
+    label: 'UniProt',
+    url: function(id) {
+      return 'http://www.uniprot.org/uniprot/'+id;
+    }
+  },
   protein_id: ENA,
   EMBL: ENA,
   KEGG_Enzyme: {
