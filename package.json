@@ -1,6 +1,6 @@
 {
   "name": "gramene-dbxrefs",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Provide API for dbxrefs",
   "main": "index.js",
   "repository": {
