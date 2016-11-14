@@ -80,5 +80,11 @@ module.exports = {
     url: function(id) {
       return 'http://www.ebi.ac.uk/intenz/query?cmd=SearchEC&ec='+id;
     }
+  },
+  reactions: {
+    label: 'Plant Reactome',
+    url: function(id) {
+      return 'http://plantreactome.gramene.org/content/detail/'+id;
+    }
   }
 };
