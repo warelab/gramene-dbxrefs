@@ -4,15 +4,21 @@ var ENA = {
     return 'http://www.ebi.ac.uk/ena/data/view/'+id;
   }
 };
-var TAIR = {
-  label: 'TAIR',
+var araport = {
+  label: 'araport',
   url: function(id) {
     return 'https://apps.araport.org/thalemine/portal.do?externalids='+id;    
   }
-}
+};
+var TAIR = {
+  label: 'TAIR',
+  url: function(id) {
+    return `https://www.arabidopsis.org/servlets/Search?type=general&search_action=detail&method=1&name=${id}&sub_type=gene`;
+  }
+};
 module.exports = {
   TAIR_LOCUS: TAIR,
-  ARAPORT_GENE: TAIR,
+  ARAPORT_GENE: araport,
   UniGene: {
     label: 'UniGene',
     url: function(id) {
