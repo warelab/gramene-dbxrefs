@@ -4,10 +4,10 @@ var ENA = {
     return 'http://www.ebi.ac.uk/ena/data/view/'+id;
   }
 };
-var araport = {
-  label: 'araport',
+var thalemine = {
+  label: 'thalemine',
   url: function(id) {
-    return 'https://apps.araport.org/thalemine/portal.do?externalids='+id;    
+    return 'https://bar.utoronto.ca/thalemine/portal.do?externalids='+id;    
   }
 };
 var TAIR = {
@@ -18,7 +18,7 @@ var TAIR = {
 };
 module.exports = {
   TAIR_LOCUS: TAIR,
-  ARAPORT_GENE: araport,
+  ARAPORT_GENE: thalemine,
   UniGene: {
     label: 'UniGene',
     url: function(id) {
