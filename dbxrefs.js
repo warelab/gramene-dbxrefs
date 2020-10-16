@@ -7,7 +7,7 @@ var ENA = {
 var thalemine = {
   label: 'thalemine',
   url: function(id) {
-    return `https://bar.utoronto.ca/thalemine/keywordSearchResults.do?searchTerm=${id}&searchSubmit=search`;
+    return 'https://bar.utoronto.ca/thalemine/keywordSearchResults.do?searchTerm='+id+'&searchSubmit=search';
   }
 };
 var TAIR = {
