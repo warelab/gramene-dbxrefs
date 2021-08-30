@@ -96,7 +96,7 @@ module.exports = {
 	NASC_GENE_ID: {
 		label: 'NASC',
 		url: function(id) {
-			return 'http://arabidopsis.org/MultiResult?agi_code='+id;
+			return 'http://arabidopsis.info/MultiResult?agi_code='+id;
 		}
 	},
 	KNETMINER_ARA: {
