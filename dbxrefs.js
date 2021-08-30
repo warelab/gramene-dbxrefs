@@ -92,5 +92,29 @@ module.exports = {
     url: function(id) {
       return 'http://plantreactome.gramene.org/content/detail/'+id;
     }
-  }
+  },
+	NASC_GENE_ID: {
+		label: 'NASC',
+		url: function(id) {
+			return 'http://arabidopsis.org/MultiResult?agi_code='+id;
+		}
+	},
+	KNETMINER_ARA: {
+		label: 'KnetMiner',
+		url: function(id) {
+			return 'https://knetminer.rothamsted.ac.uk/araknet/genepage?list='+id;
+		}
+	},
+	KNETMINER_RICE: {
+		label: 'KnetMiner',
+		url: function(id) {
+			return 'https://knetminer.rothamsted.ac.uk/riceknet/genepage?list='+id;
+		}
+	},
+	KNETMINER_WHEAT: {
+		label: 'KnetMiner',
+		url: function(id) {
+			return 'https://knetminer.rothamsted.ac.uk/wheatknet/genepage?list='+id;
+		}		
+	}
 };
