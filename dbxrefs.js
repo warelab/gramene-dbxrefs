@@ -116,5 +116,11 @@ module.exports = {
 		url: function(id) {
 			return 'https://knetminer.rothamsted.ac.uk/wheatknet/genepage?list='+id;
 		}		
-	}
+	},
+  PUBMED: {
+    label: 'PubMed',
+    url: function(id) {
+      return 'https://pubmed.ncbi.nlm.nih.gov/'+id;
+    }
+  }
 };
