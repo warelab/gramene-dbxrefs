@@ -43,8 +43,13 @@ module.exports = {
       return 'http://www.uniprot.org/uniprot/'+id;
     }
   },
-  protein_id: ENA,
   EMBL: ENA,
+  protein_id: {
+    label: 'ENA proteins',
+    url: function(id) {
+      return 'http://www.ebi.ac.uk/ena/data/view/'+id;
+    }
+  },
   KEGG_Enzyme: {
     label: 'KEGG Enzyme',
     url: function(id) {
