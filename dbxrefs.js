@@ -13,7 +13,7 @@ var thalemine = {
 var TAIR = {
   label: 'TAIR',
   url: function(id) {
-    return 'https://www.arabidopsis.org/servlets/Search?type=general&search_action=detail&method=1&name='+id+'&sub_type=gene';
+    return `https://www.arabidopsis.org/results?mainType=general&category=genes&searchText=${id}`
   }
 };
 module.exports = {
