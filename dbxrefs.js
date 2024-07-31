@@ -19,6 +19,12 @@ var TAIR = {
 module.exports = {
   TAIR_LOCUS: TAIR,
   ARAPORT_GENE: thalemine,
+  PanOryza: {
+    label: 'PanOryza pan gene',
+    url: function(id) {
+      return `?fq_field=PanOryza__xrefs&fq_value=${id}&category=PanOryza pan gene&name=${id}`
+    }
+  },
   UniGene: {
     label: 'UniGene',
     url: function(id) {
@@ -120,7 +126,7 @@ module.exports = {
 		label: 'KnetMiner',
 		url: function(id) {
 			return 'https://knetminer.rothamsted.ac.uk/wheatknet/genepage?list='+id;
-		}		
+		}
 	},
   PUBMED: {
     label: 'PubMed',
