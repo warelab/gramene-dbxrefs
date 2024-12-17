@@ -25,6 +25,12 @@ module.exports = {
       return `?fq_field=PanOryza__xrefs&fq_value=${id}&category=PanOryza pan gene&name=${id}`
     }
   },
+  SB_PanGene: {
+    label: 'SorghumBase pan gene',
+    url: function(id) {
+      return `?fq_field=SB_PanGene__xrefs&fq_value=${id}&category=SorghumBase pan gene&name=${id}`
+    }
+  },
   UniGene: {
     label: 'UniGene',
     url: function(id) {
