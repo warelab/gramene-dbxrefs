@@ -86,6 +86,27 @@ module.exports = {
   },
   Grassius: facetLink('Grassius__xrefs', 'Grassius TF family'),
   external_wheat_gene_names: facetLink('external_wheat_gene_names__xrefs', 'Wheat gene name'),
+  LeGOO: {
+    label: 'LeGOO (curated)',
+    url: function () {
+      // 4,399 medicago genes. This one is deliberately NOT an id link, for two reasons.
+      //
+      // The id is the gene's OWN MtrunA17 stable id, not a foreign accession -- the LeGOO acronym
+      // went into gene.name -- so a link keyed on it would point back at the page it is rendered
+      // on. What the xref actually records is PROVENANCE: this gene's name and description came
+      // from LeGOO rather than from the Ensembl core, which for medicago supplied 452 names and
+      // 113 descriptions across 50,739 genes.
+      //
+      // And LeGOO itself is gone: legoo.inrae.fr and legoo.inra.fr are both NXDOMAIN, not merely
+      // blocking automated clients, so there is no gene page left to deep-link. The DOI is the
+      // durable target -- it is also the citation the source REQUIRES, recorded in the external_db
+      // row by gramene-mongodb/legoo/ so the obligation travels with the data. The genome the
+      // spreadsheet came from is at medicago.toulouse.inra.fr/MtrunA17r5.0-ANR/ if a browsable
+      // link is ever wanted, but that is the INRAE browser, not LeGOO, and mislabelling it here
+      // would misattribute the curation.
+      return 'https://doi.org/10.1093/pcp/pcz177';
+    }
+  },
 
   PanOryza: {
     label: 'PanOryza pan gene',
