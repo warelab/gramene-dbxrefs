@@ -16,9 +16,98 @@ var TAIR = {
     return `https://www.arabidopsis.org/results?mainType=general&category=genes&searchText=${id}`
   }
 };
+// A within-site facet filter, the same shape PanOryza / SB_PanGene / Pan-Zea already use below.
+// This is the right target when an xref id names a SET of genes rather than one external record --
+// a Grassius id is a transcription-factor FAMILY (LEUNIG, AP2/ERF-ERF, Sigma70-like), not a gene
+// symbol -- and it keeps working when the external site does not. encodeURIComponent matters here:
+// family names contain '/'.
+function facetLink(field, category) {
+  return {
+    label: category,
+    url: function (id) {
+      var v = encodeURIComponent(id);
+      return `?fq_field=${field}&fq_value=${v}&category=${encodeURIComponent(category)}&name=${v}`;
+    }
+  };
+}
+
 module.exports = {
   TAIR_LOCUS: TAIR,
   ARAPORT_GENE: thalemine,
+
+  // ---- curated gene symbols and names -------------------------------------------------------
+  // These five were all present in the data and absent from this registry, so Xrefs.js, which
+  // filters on isKnown(xr.db), silently dropped every one of them: TAIR_SYMBOL 9,793 genes,
+  // Oryzabase 8,051, RAP-DB 1,175, Grassius 8,796, external_wheat_gene_names 257. MaizeGDB and DOI
+  // are new in release 70.
+  TAIR_SYMBOL: {
+    label: 'TAIR symbol',
+    url: function (id) {
+      // Same arabidopsis.org search this registry already uses for TAIR_LOCUS; the search box takes
+      // a symbol as readily as a locus. Not verifiable from a server -- arabidopsis.org answers 403
+      // to non-browser clients -- so this reuses an already-shipped template rather than a new guess.
+      return `https://www.arabidopsis.org/results?mainType=general&category=genes&searchText=${encodeURIComponent(id)}`;
+    }
+  },
+  Oryzabase: {
+    label: 'Oryzabase',
+    url: function (id) {
+      // id is a rice gene symbol (RPS5, OsDjC1, OsHAP5H). Endpoint returns 200; Oryzabase renders
+      // its results client-side, so a server-side fetch cannot confirm a given symbol resolves.
+      return `https://shigen.nig.ac.jp/rice/oryzabase/gene/search?name=${encodeURIComponent(id)}`;
+    }
+  },
+  'RAP-DB': {
+    label: 'RAP-DB',
+    url: function (id) {
+      // id is a rice gene symbol (SPL33, OsTLP27), so this is the name SEARCH, not the /locus/
+      // route that expects an Os##g####### id. Host is naro.go.jp: the affrc.go.jp host still
+      // referenced elsewhere in this codebase does not answer at all.
+      return `https://rapdb.dna.naro.go.jp/search/?name=${encodeURIComponent(id)}`;
+    }
+  },
+  MaizeGDB: {
+    label: 'MaizeGDB',
+    url: function (id) {
+      // id is a curated maize gene symbol (gbss2, thk1, mha11). gene_center/gene/ is the route this
+      // codebase already uses for MaizeGDB (see gramene-search Location.js). NOT verified from
+      // squam: www.maizegdb.org answers 403 to automated clients via Cloudflare, so this needs one
+      // click in a browser to confirm.
+      return `https://www.maizegdb.org/gene_center/gene/${encodeURIComponent(id)}`;
+    }
+  },
+  DOI: {
+    label: 'DOI',
+    url: function (id) {
+      // Curated references are not all PMIDs -- RAP-DB keys 246 of its references by DOI. Do NOT
+      // encode: a DOI contains '/' as a structural separator (10.1016/j.cj.2016.06.014).
+      return `https://doi.org/${id}`;
+    }
+  },
+  Grassius: facetLink('Grassius__xrefs', 'Grassius TF family'),
+  external_wheat_gene_names: facetLink('external_wheat_gene_names__xrefs', 'Wheat gene name'),
+  LeGOO: {
+    label: 'LeGOO (curated)',
+    url: function () {
+      // 4,399 medicago genes. This one is deliberately NOT an id link, for two reasons.
+      //
+      // The id is the gene's OWN MtrunA17 stable id, not a foreign accession -- the LeGOO acronym
+      // went into gene.name -- so a link keyed on it would point back at the page it is rendered
+      // on. What the xref actually records is PROVENANCE: this gene's name and description came
+      // from LeGOO rather than from the Ensembl core, which for medicago supplied 452 names and
+      // 113 descriptions across 50,739 genes.
+      //
+      // And LeGOO itself is gone: legoo.inrae.fr and legoo.inra.fr are both NXDOMAIN, not merely
+      // blocking automated clients, so there is no gene page left to deep-link. The DOI is the
+      // durable target -- it is also the citation the source REQUIRES, recorded in the external_db
+      // row by gramene-mongodb/legoo/ so the obligation travels with the data. The genome the
+      // spreadsheet came from is at medicago.toulouse.inra.fr/MtrunA17r5.0-ANR/ if a browsable
+      // link is ever wanted, but that is the INRAE browser, not LeGOO, and mislabelling it here
+      // would misattribute the curation.
+      return 'https://doi.org/10.1093/pcp/pcz177';
+    }
+  },
+
   PanOryza: {
     label: 'PanOryza pan gene',
     url: function(id) {
