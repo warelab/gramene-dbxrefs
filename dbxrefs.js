@@ -125,7 +125,7 @@ module.exports = {
     url: function(id) {
       return `?fq_field=Pan-Zea__xrefs&fq_value=${id}&category=Maize pan gene&"/--name=${id}`
     }
-  },ç
+  },
   UniGene: {
     label: 'UniGene',
     url: function(id) {
